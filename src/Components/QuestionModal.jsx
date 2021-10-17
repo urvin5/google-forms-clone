@@ -27,6 +27,7 @@ export function QuestionModal({
   function handleQuestionSubmit() {
     setQuestionModal(false);
     setQuestionList([formData, ...questionList]);
+    setFormData(intialData);
   }
 
   return (

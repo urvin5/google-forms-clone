@@ -1,7 +1,7 @@
 export const CREATE_FORM = "CREATE_FORM";
 export const GET_FORM_LIST = "GET_FORM_LIST";
-// export const GET_TIME_SLOTS = "GET_TIME_SLOTS";
-// export const DETAILS_OF_TIME = "DETAILS_OF_TIME";
+export const DELETE_FORM = "DELETE_FORM";
+
 function createForm(payload) {
   return {
     type: CREATE_FORM,
@@ -13,5 +13,11 @@ function getFormList() {
     type: GET_FORM_LIST,
   };
 }
+function deleteForm(id) {
+  return {
+    type: DELETE_FORM,
+    payload: id,
+  };
+}
 
-export { createForm, getFormList };
+export { createForm, getFormList, deleteForm };

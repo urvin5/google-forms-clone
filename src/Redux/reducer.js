@@ -1,4 +1,4 @@
-import { CREATE_FORM, GET_FORM_LIST } from "./actions";
+import { CREATE_FORM, DELETE_FORM, GET_FORM_LIST } from "./actions";
 export function reducer(state = {}, action) {
   switch (action.type) {
     case CREATE_FORM:
@@ -14,6 +14,18 @@ export function reducer(state = {}, action) {
             JSON.parse(localStorage.getItem("formList")) ||
             []),
         ],
+      };
+    case DELETE_FORM:
+      const formList = JSON.parse(
+        window.localStorage.getItem("formList") || "[]"
+      );
+      const updated = formList.filter(
+        (item) => item.formSlug !== action.payload
+      );
+      window.localStorage.setItem("formList", JSON.stringify(updated));
+      return {
+        ...state,
+        formList: updated,
       };
     default:
       return {

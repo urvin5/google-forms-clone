@@ -12,9 +12,11 @@ export default function CreateForm() {
   const [questionModal, setQuestionModal] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
+
   function handleDeleteQuestion(index) {
     setQuestionList((data) => data.filter((item, i) => i !== index));
   }
+
   function handleFormSubmit() {
     const data = {
       formName: formData.name,
@@ -22,7 +24,6 @@ export default function CreateForm() {
       formSlug: uuid(),
       createdAt: new Date(),
     };
-
     dispatch(createForm(data));
     localStorage.setItem(
       "formList",
@@ -33,6 +34,7 @@ export default function CreateForm() {
     );
     history.push("/");
   }
+
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
