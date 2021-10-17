@@ -59,25 +59,28 @@ export default function CreateForm() {
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <Card.Header>Question: {question.questionText}</Card.Header>
+                  <Card.Header as={"h3"}>
+                    Question: {question.questionText}
+                  </Card.Header>
                   <Button
                     icon="delete"
                     onClick={() => handleDeleteQuestion(index)}
                   ></Button>
                 </div>
-                <Card.Meta>
+                <Card.Description>
                   <span className="date">
                     Question Type: {question.questionType}
                   </span>
-                </Card.Meta>
-                <Card.Description>
                   {question.options && (
                     <h5>{`${question.questionType} options`} </h5>
                   )}
-                  {question.options &&
-                    question.options
-                      .split(",")
-                      .map((option) => <List>{option}</List>)}
+                  {question.options && (
+                    <List ordered>
+                      {question.options.split(",").map((option) => (
+                        <List.Item> {option}</List.Item>
+                      ))}
+                    </List>
+                  )}
                 </Card.Description>
               </Card.Content>
             ))}

@@ -75,12 +75,13 @@ export function QuestionModal({
               <Form.Field>
                 <label>Options</label>
                 <Input
-                  placeholder="Options could be seperated by commas(,)"
+                  placeholder="Enter options"
                   value={formData.options}
                   onChange={(e, { value }) =>
                     setFormData({ ...formData, options: value })
                   }
                 />
+                <span>Options could be seperated by commas(,)</span>
               </Form.Field>
             )}
           </Form>

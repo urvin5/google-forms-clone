@@ -21,6 +21,7 @@ export function reducer(state = {}, action) {
       const selectedForm = state?.formList?.filter(
         (form) => form.formSlug === action.payload
       );
+
       return {
         ...state,
         selectedForm,

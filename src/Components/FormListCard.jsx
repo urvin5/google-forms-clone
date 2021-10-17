@@ -33,7 +33,7 @@ export function FormListCard({ formList }) {
             </div>
             <Card.Meta>
               <span className="date">
-                Total questions : {moment(form.createdAt).format("MMM Do YY")}
+                Created date : {moment(form.createdAt).format("MMM Do YY")}
               </span>
             </Card.Meta>
             <Card.Description>
