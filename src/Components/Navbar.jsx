@@ -4,9 +4,11 @@ export function Navbar() {
   return (
     <Menu fixed="top" inverted>
       <Container>
-        <Menu.Item as="a" header>
-          <Link to="/"> Forms</Link>
-        </Menu.Item>
+        <Link to="/">
+          <Menu.Item as="a" header>
+            Forms
+          </Menu.Item>
+        </Link>
         <Menu.Menu position="right">
           <Menu.Item>
             <Link to="/create">Create Form</Link>

@@ -2,8 +2,9 @@ import React, { Suspense } from "react";
 import { Route, Switch } from "react-router";
 import { Loader } from "semantic-ui-react";
 import AppLayout from "./Components/AppLayout";
-const FormList = React.lazy(() => import("./Pages/form-list"));
-const CreateForm = React.lazy(() => import("./Pages/create-form"));
+import ViewForm from "./Pages/view-form";
+import FormList from "./Pages/form-list";
+import CreateForm from "./Pages/create-form.jsx";
 
 export function Routes() {
   return (
@@ -23,6 +24,15 @@ export function Routes() {
           component={() => (
             <AppLayout>
               <CreateForm />
+            </AppLayout>
+          )}
+          exact
+        />
+        <Route
+          path="/view/:uuid"
+          component={() => (
+            <AppLayout>
+              <ViewForm />
             </AppLayout>
           )}
           exact
