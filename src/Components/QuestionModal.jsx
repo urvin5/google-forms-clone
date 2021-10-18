@@ -94,6 +94,10 @@ export function QuestionModal({
         <Button
           content="Add question"
           positive
+          disabled={
+            !formData.questionText ||
+            (formData.questionType !== "text" && !formData.options)
+          }
           onClick={() => handleQuestionSubmit()}
         />
       </Modal.Actions>
