@@ -18,9 +18,11 @@ export function reducer(state = {}, action) {
       };
 
     case VIEW_FORM:
-      const selectedForm = state?.formList?.filter(
-        (form) => form.formSlug === action.payload
-      );
+      const selectedForm =
+        state?.formList?.filter((form) => form.formSlug === action.payload) ||
+        JSON.parse(localStorage.getItem("formList")).filter(
+          (form) => form.formSlug === action.payload
+        );
 
       return {
         ...state,

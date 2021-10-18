@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router";
@@ -15,6 +15,7 @@ export default function ViewForm() {
     dispatch(viewForm(uuid));
   }, [uuid]);
 
+  const [formData, setFormData] = useState();
   function getQuestionWithType(question) {
     if (question.questionType === "text") {
       return (
@@ -28,8 +29,19 @@ export default function ViewForm() {
       return (
         <Form.Group grouped key={question.questionText}>
           <label>{question.questionText}</label>
-          {question.options?.split(",").map((option) => (
-            <Form.Radio label={option} value={option} />
+          {question.options?.split(",").map((option, index) => (
+            <Form.Field>
+              <Form.Radio
+                label={option}
+                value={option}
+                name={question.questionText}
+                key={index}
+                onChange={(e, { value, name }) =>
+                  setFormData({ ...formData, [name]: value })
+                }
+                checked={formData?.[question?.questionText] === option}
+              />
+            </Form.Field>
           ))}
         </Form.Group>
       );
